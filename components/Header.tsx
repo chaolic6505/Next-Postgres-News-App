@@ -69,7 +69,6 @@ function Header() {
                     <Image
                         fill={true}
                         alt='sign in'
-                        objectFit='contain'
                         src='/grey-reddit.png'
                     />
                 </div>
