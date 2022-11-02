@@ -2,8 +2,21 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { HomeIcon, SearchIcon, ChevronDownIcon } from '@heroicons/react/solid';
-import { BeakerIcon } from '@heroicons/react/outline';
+import {
+    MenuIcon,
+    HomeIcon,
+    SearchIcon,
+    ChevronDownIcon,
+} from '@heroicons/react/solid';
+import {
+    BellIcon,
+    ChatIcon,
+    GlobeIcon,
+    PlusIcon,
+    SparklesIcon,
+    SpeakerphoneIcon,
+    VideoCameraIcon,
+} from '@heroicons/react/outline';
 
 function Header() {
     return (
@@ -34,6 +47,22 @@ function Header() {
                 />
                 <button type='submit' hidden />
             </form>
+
+            {/* Hidden if smaller screen */}
+            <div className='mx-5 hidden items-center space-x-2 text-gray-500 lg:inline-flex'>
+                <SparklesIcon className='icon' />
+                <GlobeIcon className='icon' />
+                <VideoCameraIcon className='icon' />
+                <hr className='h-10 border border-gray-100' />
+                <ChatIcon className='icon' />
+                <BellIcon className='icon' />
+                <PlusIcon className='icon' />
+                <SpeakerphoneIcon className='icon' />
+            </div>
+            {/* Show if smaller screen */}
+            <div className='mx-5 flex items-center lg:hidden'>
+                <MenuIcon className='icon' />
+            </div>
         </div>
     );
 }
