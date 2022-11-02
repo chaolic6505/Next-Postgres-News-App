@@ -5,12 +5,11 @@ import Image from 'next/image';
 function Header() {
     return (
         <div>
-            <div className='relative h-10 w-200 flex-shrink-0 cursor-pointer'>
+            <div className='relative h-10 w-20'>
                 <Link href='/'>
                     <Image
                         alt='logo'
-                        width={200}
-                        height={100}
+                        fill={true}
                         src="/reddit-logo.png"
                         className='w-90 cursor-pointer object-contain'
                     />
