@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 
 import {
     MenuIcon,
@@ -62,6 +63,16 @@ function Header() {
             {/* Show if smaller screen */}
             <div className='mx-5 flex items-center lg:hidden'>
                 <MenuIcon className='icon' />
+            </div>
+
+            <div
+                onClick={() => signIn()}
+                className='hidden cursor-pointer items-center space-x-2 border border-gray-100 p-2 lg:flex '
+            >
+                <div className='relative h-5 w-5 flex-shrink-0'>
+                    <Image fill={true} alt='sign in' src='/grey-reddit.png' />
+                </div>
+                <p className='text-gray-400'>Sign In</p>
             </div>
         </div>
     );
