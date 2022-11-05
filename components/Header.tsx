@@ -17,8 +17,8 @@ import {
     GlobeIcon,
     PlusIcon,
     SparklesIcon,
-    SpeakerphoneIcon,
     VideoCameraIcon,
+    SpeakerphoneIcon,
 } from '@heroicons/react/outline';
 
 const renderIcons = (hasBorder?: boolean) => {
