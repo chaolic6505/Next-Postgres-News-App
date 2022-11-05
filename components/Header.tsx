@@ -21,6 +21,20 @@ import {
     VideoCameraIcon,
 } from '@heroicons/react/outline';
 
+const renderIcons = (hasBorder?: boolean) => {
+    return (
+        <>
+            <SparklesIcon className='icon' />
+            <GlobeIcon className='icon' />
+            <VideoCameraIcon className='icon' />
+            {hasBorder ? <hr className='h-10 border border-gray-100' /> : null}
+            <ChatIcon className='icon' />
+            <BellIcon className='icon' />
+            <PlusIcon className='icon' />
+            <SpeakerphoneIcon className='icon' />
+        </>
+    );
+};
 function Header() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const { data: session } = useSession();
@@ -56,14 +70,7 @@ function Header() {
 
             {/* Hidden if smaller screen */}
             <div className='mx-5 hidden items-center space-x-2 text-gray-500 lg:inline-flex'>
-                <SparklesIcon className='icon' />
-                <GlobeIcon className='icon' />
-                <VideoCameraIcon className='icon' />
-                <hr className='h-10 border border-gray-100' />
-                <ChatIcon className='icon' />
-                <BellIcon className='icon' />
-                <PlusIcon className='icon' />
-                <SpeakerphoneIcon className='icon' />
+                {renderIcons(true)}
             </div>
 
             {/* Sign in - Sign out button */}
@@ -77,7 +84,6 @@ function Header() {
                             fill={true}
                             alt='Sign Out Button'
                             src='/grey-reddit.png'
-
                         />
                     </div>
                     <div className='flex-1 text-xs'>
@@ -95,10 +101,9 @@ function Header() {
                             fill={true}
                             alt='Sign In Button'
                             src='/grey-reddit.png'
-
                         />
                     </div>
-                    <p className='text-gray-400'>Sign In</p>
+                    <p className='text-slate-900'>Sign In</p>
                 </div>
             )}
 
@@ -118,13 +123,7 @@ function Header() {
 
                 {toggleMenu && (
                     <div className='flex z-20 justify-end items-end flex-col text-center py-2 px-2 absolute top-12 -right-1.5 mt-1 scale min-w-max bg-white'>
-                        <SparklesIcon className='icon' />
-                        <GlobeIcon className='icon' />
-                        <VideoCameraIcon className='icon' />
-                        <ChatIcon className='icon' />
-                        <BellIcon className='icon' />
-                        <PlusIcon className='icon' />
-                        <SpeakerphoneIcon className='icon' />
+                        {renderIcons()}
                         {session ? (
                             <LogoutIcon
                                 onClick={() => signOut()}
