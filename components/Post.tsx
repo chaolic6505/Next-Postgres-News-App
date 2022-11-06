@@ -15,7 +15,6 @@ import {
 } from '@heroicons/react/outline';
 
 import Avatar from './Avatar';
-
 import { ADD_VOTE } from '../graphql/mutations';
 import { GET_ALL_VOTES_BY_POST_ID } from '../graphql/queries';
 

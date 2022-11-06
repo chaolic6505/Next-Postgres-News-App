@@ -1,13 +1,14 @@
-import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
-import Avatar from './Avatar';
-import { LinkIcon, PhotographIcon } from '@heroicons/react/outline';
 import { useForm } from 'react-hook-form';
+import { useSession } from 'next-auth/react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST, ADD_SUBREDDIT } from '../graphql/mutations';
+import { LinkIcon, PhotographIcon } from '@heroicons/react/outline';
+
+import Avatar from './Avatar';
 import client from '../apollo-client';
 import { GET_ALL_POSTS, GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries';
-import toast from 'react-hot-toast';
 
 type FormData = {
     postTitle: string;
@@ -23,7 +24,9 @@ type Props = {
 function Postbox({ subreddit }: Props) {
     const { data: session } = useSession();
     //refetch when adding a post
-    const [addPost] = useMutation(ADD_POST);
+    const [addPost] = useMutation(ADD_POST, {
+        refetchQueries: [GET_ALL_POSTS, 'getPostList'],
+    });
     const [addSubreddit] = useMutation(ADD_SUBREDDIT);
     const [imageBoxOpen, setImageBoxOpen] = useState<boolean>(false);
     const {
@@ -35,7 +38,6 @@ function Postbox({ subreddit }: Props) {
     } = useForm<FormData>();
 
     const onSubmit = handleSubmit(async (formData) => {
-        console.log(formData,'handleSubmit formData');
         const notification = toast.loading('Creating new post...');
 
         try {
