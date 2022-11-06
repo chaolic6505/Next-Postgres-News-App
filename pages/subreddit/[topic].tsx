@@ -7,6 +7,7 @@ import Avatar from '../../components/Avatar';
 import Postbox from '../../components/Postbox';
 
 function Subreddit() {
+    //Get the topic from the URL
     const {
         query: { topic },
     } = useRouter();
