@@ -1,25 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { signIn } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 import {
+    XIcon,
     MenuIcon,
     HomeIcon,
     SearchIcon,
-    ChevronDownIcon,
+    LogoutIcon,
 } from '@heroicons/react/solid';
-import {
-    BellIcon,
-    ChatIcon,
-    GlobeIcon,
-    PlusIcon,
-    SparklesIcon,
-    SpeakerphoneIcon,
-    VideoCameraIcon,
-} from '@heroicons/react/outline';
 
 function Header() {
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const { data: session } = useSession();
+
     return (
         <div className='flex bg-white px-4 py-2 sticky top-0 z-50'>
             <div className='relative h-10 w-20'>
@@ -33,9 +28,10 @@ function Header() {
                 </Link>
             </div>
             <div className='mx-7 flex items-center xl:min-w-[300px]'>
-                <HomeIcon className='h-5 w-5' />
-                <p className='ml-2 hidden flex-1 lg:inline'>Home</p>
-                <ChevronDownIcon className='h-5 w-5' />
+                <Link href='/' className='flex'>
+                    <HomeIcon className='h-5 w-5' />
+                    <p className='ml-2 hidden flex-1 lg:inline'>Home</p>
+                </Link>
             </div>
 
             {/* Searchbox */}
@@ -43,36 +39,85 @@ function Header() {
                 <SearchIcon className='h-6 w-6 text-gray-400' />
                 <input
                     type='text'
-                    placeholder='Search Reddit'
+                    disabled={true}
+                    placeholder='Search Reddit (currently disabled)'
                     className='flex-1 bg-transparent outline-none'
                 />
                 <button type='submit' hidden />
             </form>
 
-            {/* Hidden if smaller screen */}
-            <div className='mx-5 hidden items-center space-x-2 text-gray-500 lg:inline-flex'>
-                <SparklesIcon className='icon' />
-                <GlobeIcon className='icon' />
-                <VideoCameraIcon className='icon' />
-                <hr className='h-10 border border-gray-100' />
-                <ChatIcon className='icon' />
-                <BellIcon className='icon' />
-                <PlusIcon className='icon' />
-                <SpeakerphoneIcon className='icon' />
-            </div>
-            {/* Show if smaller screen */}
-            <div className='mx-5 flex items-center lg:hidden'>
-                <MenuIcon className='icon' />
-            </div>
-
-            <div
-                onClick={() => signIn()}
-                className='hidden cursor-pointer items-center space-x-2 border border-gray-100 p-2 lg:flex '
-            >
-                <div className='relative h-5 w-5 flex-shrink-0'>
-                    <Image fill={true} alt='sign in' src='/grey-reddit.png' />
+            {/* Sign in - Sign out button */}
+            {session ? (
+                <div
+                    onClick={() => signOut()}
+                    className='hidden lg:flex items-center space-x-2 border border-gray-100 cursor-pointer p-2'
+                >
+                    <div className='relative h-5 w-5 flex-shrink-0'>
+                        <Image
+                            fill={true}
+                            alt='Sign Out Button'
+                            src='/grey-reddit.png'
+                        />
+                    </div>
+                    <div className='flex-1 text-xs'>
+                        <p className='truncate'>{session?.user?.name}</p>
+                    </div>
+                    <LogoutIcon className='h-5 flex-shrink-0 text-gray-400' />
                 </div>
-                <p className='text-gray-400'>Sign In</p>
+            ) : (
+                <div
+                    onClick={() => signIn()}
+                    className='hidden lg:flex items-center space-x-2 border border-gray-100 cursor-pointer p-2'
+                >
+                    <div className='relative h-5 w-5 flex-shrink-0'>
+                        <Image
+                            fill={true}
+                            alt='Sign In Button'
+                            src='/grey-reddit.png'
+                        />
+                    </div>
+                    <p className='text-slate-900'>Sign In</p>
+                </div>
+            )}
+
+            {/* Dropdown menu */}
+            <div className='ml-5 flex items-center lg:hidden relative'>
+                {toggleMenu ? (
+                    <XIcon
+                        className='icon'
+                        onClick={() => setToggleMenu(false)}
+                    />
+                ) : (
+                    <MenuIcon
+                        className='icon'
+                        onClick={() => setToggleMenu(true)}
+                    />
+                )}
+
+                {toggleMenu && (
+                    <div className='flex z-20 justify-end items-end flex-col text-center py-2 px-2 absolute top-12 -right-1.5 mt-1 scale min-w-max bg-white'>
+                        {/* {renderIcons()} */}
+                        {session ? (
+                            <LogoutIcon
+                                onClick={() => signOut()}
+                                className=' text-gray-400 icon'
+                            />
+                        ) : (
+                            <div
+                                onClick={() => signIn()}
+                                className='flex items-center space-x-2 border border-gray-100 cursor-pointer p-2 mt-1'
+                            >
+                                <div className='relative h-5 w-5 flex-shrink-0'>
+                                    <Image
+                                        alt='Sign In Button'
+                                        src='/grey-reddit.png'
+                                    />
+                                </div>
+                                <p className='text-gray-400'>Sign In</p>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

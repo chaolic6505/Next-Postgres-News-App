@@ -4,4 +4,7 @@ module.exports = {
     typescript: {
         ignoreBuildErrors: true,
     },
+    domains: [
+        'avatars.dicebear.com',
+    ],
 };
