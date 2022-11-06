@@ -46,7 +46,7 @@ function Post({ post }: Props) {
 
     const upVote = async (isUpvote: boolean) => {
         if (!session) {
-            toast("You'll need to ign in to vote!");
+            toast("You'll need to sign in to vote!");
             return;
         }
 
