@@ -20,23 +20,25 @@ type FormData = {
 function PostPage() {
     const router = useRouter();
     const { data: session } = useSession();
+
+    //refetch current post when adding a comment
+    const { postId } = router.query;
     const [addComment] = useMutation(ADD_COMMENT, {
         refetchQueries: [GET_POST_BY_POST_ID, 'getPostListByPostId'],
     });
 
-    const { loading, error, data } = useQuery(GET_POST_BY_POST_ID, {
+    const { loading, data } = useQuery(GET_POST_BY_POST_ID, {
         variables: {
-            post_id: router.query.postId,
+            post_id: postId,
         },
     });
 
     const post: Post = data?.getPostListByPostId;
 
     const {
+        setValue,
         register,
         handleSubmit,
-        watch,
-        setValue,
         formState: { errors },
     } = useForm<FormData>();
 
@@ -77,8 +79,8 @@ function PostPage() {
                     className='flex flex-col space-y-2'
                 >
                     <textarea
-                        {...register('comment')}
                         disabled={!session}
+                        {...register('comment')}
                         className='h-24 rounded-md border border-gray-200 p-2 pl-4 outline-none disabled:bg-gray-50'
                         placeholder={
                             session
@@ -88,8 +90,8 @@ function PostPage() {
                     />
 
                     <button
-                        disabled={!session}
                         type='submit'
+                        disabled={!session}
                         className='rounded-full bg-red-500 p-3 font-semibold text-white disabled:bg-gray-50'
                     >
                         Comment
