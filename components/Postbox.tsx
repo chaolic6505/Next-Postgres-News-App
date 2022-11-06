@@ -55,9 +55,6 @@ function Postbox({ subreddit }: Props) {
 
             if (!subredditExists) {
                 // create subreddit
-                console.log('Subreddit is new --> creating a NEW subreddit!');
-
-                //adding and renaming insertSubreddit to newSubreddit
                 const {
                     data: { insertSubreddit: newSubreddit },
                 } = await addSubreddit({
@@ -65,10 +62,7 @@ function Postbox({ subreddit }: Props) {
                         topic: formData.subreddit,
                     },
                 });
-
-                console.log('Creating post...', formData);
                 const image = formData.postImage || '';
-
                 const {
                     data: { insertPost: newPost },
                 } = await addPost({
@@ -80,17 +74,9 @@ function Postbox({ subreddit }: Props) {
                         username: session?.user?.name,
                     },
                 });
-
-                console.log('New post added', newPost);
             } else {
                 // use existing subreddit
-                console.log(
-                    'Using existing subreddit!',
-                    getSubredditListByTopic
-                );
-
                 const image = formData.postImage || '';
-
                 const {
                     data: { insertPost: newPost },
                 } = await addPost({
@@ -102,8 +88,6 @@ function Postbox({ subreddit }: Props) {
                         username: session?.user?.name,
                     },
                 });
-
-                console.log('New post added', newPost);
             }
 
             //After post has been added

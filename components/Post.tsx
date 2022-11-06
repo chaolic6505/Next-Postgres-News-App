@@ -5,13 +5,9 @@ import { useSession } from 'next-auth/react';
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import {
-    GiftIcon,
-    ShareIcon,
     ChatAltIcon,
     ArrowUpIcon,
-    BookmarkIcon,
     ArrowDownIcon,
-    DotsHorizontalIcon,
 } from '@heroicons/react/outline';
 
 import Avatar from './Avatar';
@@ -57,21 +53,20 @@ function Post({ post }: Props) {
         if (vote && isUpvote) return;
         if (vote === false && !isUpvote) return;
 
-        console.log('Voting...', isUpvote);
-
         const {
             data: { insertVote: newVote },
         } = await addVote({
             variables: {
+                upvote: isUpvote,
                 post_id: post?.id,
                 username: session?.user?.name,
-                upvote: isUpvote,
             },
         });
     };
 
     const displayVotes = (data: any) => {
         const votes: Vote[] = data?.getVotesByPostId;
+        //Add up all the upvotes and downvotes
         const displayNumber = votes?.reduce(
             (total, vote) => (vote.upvote ? (total += 1) : (total -= 1)),
             0
@@ -93,21 +88,6 @@ function Post({ post }: Props) {
                     <p className='hidden sm:inline'>
                         {post.comments.length} Comments
                     </p>
-                </div>
-                <div className='postButtons'>
-                    <GiftIcon className='h-6 w-6' />
-                    <p className='hidden sm:inline'>Award</p>
-                </div>
-                <div className='postButtons'>
-                    <ShareIcon className='h-6 w-6' />
-                    <p className='hidden sm:inline'>Share</p>
-                </div>
-                <div className='postButtons'>
-                    <BookmarkIcon className='h-6 w-6' />
-                    <p className='hidden sm:inline'>Save</p>
-                </div>
-                <div className='postButtons'>
-                    <DotsHorizontalIcon className='h-6 w-6' />
                 </div>
             </div>
         );
