@@ -1,8 +1,9 @@
 import React from 'react';
-import { Jelly } from '@uiball/loaders';
 import { useQuery } from '@apollo/client';
 
 import Post from './Post';
+import Loader from './Loader';
+
 import { GET_ALL_POSTS, GET_ALL_POSTS_BY_TOPIC } from '../graphql/queries';
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 };
 
 function Feed({ topic }: Props) {
-    const { data, error } = !topic
+    const { data, loading } = !topic
         ? useQuery(GET_ALL_POSTS)
         : useQuery(GET_ALL_POSTS_BY_TOPIC, {
               variables: {
@@ -20,12 +21,7 @@ function Feed({ topic }: Props) {
 
     const posts: Post[] = !topic ? data?.getPostList : data?.getPostListByTopic;
 
-    if (!posts)
-        return (
-            <div className='flex w-full items-center justify-center p-10 text-xl'>
-                <Jelly size={50} color='#FF4501' />
-            </div>
-        );
+    if (!posts || loading) return <Loader size={100} />;
 
     return (
         <div className='mt-5 space-y-4'>
