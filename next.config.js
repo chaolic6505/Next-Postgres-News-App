@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    reactStrictMode: true,
-    typescript: {
-        ignoreBuildErrors: true,
-    },
-    domains: [
-        'avatars.dicebear.com',
-    ],
-};
+  reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  domains: ['avatars.dicebear.com'],
+}

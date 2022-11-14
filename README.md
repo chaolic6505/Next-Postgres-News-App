@@ -25,13 +25,13 @@ You will also see any lint errors in the console.
 
 ## Built With
 
--   [Next.js](https://nextjs.org/docs/getting-started)
--   [Tailwind](https://tailwindcss.com/)
--   [GraphQL](https://graphql.org/)
--   [StepZen](https://stepzen.com/)
--   [Supabase](https://supabase.com/)
--   [Typescript](https://nextjs.org/docs/basic-features/typescript)
--   [PostgreSQL](https://www.postgresql.org/)
+- [Next.js](https://nextjs.org/docs/getting-started)
+- [Tailwind](https://tailwindcss.com/)
+- [GraphQL](https://graphql.org/)
+- [StepZen](https://stepzen.com/)
+- [Supabase](https://supabase.com/)
+- [Typescript](https://nextjs.org/docs/basic-features/typescript)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Create a .env.local file with following variables:
 
