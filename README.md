@@ -1,6 +1,6 @@
-<h1 align="center"><project-name></h1>
-
-<p align="center"><project-description></p>
+<h1 align="center">
+Next-Postgres-News-App
+<project-name></h1>
 
 ## Get Started
 
@@ -22,6 +22,15 @@ stepzen start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 You will also see any lint errors in the console.
+
+
+## Current Functionality
+
+- OAuth with Reddit 
+- Responsive styles with tailwindcss
+- Users can create a new post that can then be voted on.
+- Users can catergorize their posts and enter different room based on category
+
 
 ## Built With
 

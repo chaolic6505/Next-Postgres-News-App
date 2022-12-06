@@ -45,11 +45,11 @@ function Post({ post }: Props) {
     setVote(vote)
   }, [data])
 
-  const upVote = async (isUpvote: boolean) => {
-    if (!session) {
-      toast("You'll need to sign in to vote!")
-      return
-    }
+    const upVote = async (isUpvote: boolean) => {
+        if (!session) {
+            toast.error("You'll need to sign in to vote!");
+            return;
+        }
 
     if (vote && isUpvote) return
     if (vote === false && !isUpvote) return
