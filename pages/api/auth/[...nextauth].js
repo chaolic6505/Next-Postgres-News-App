@@ -5,10 +5,9 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     RedditProvider({
+      secret: process.env.SECRET,
       clientId: process.env.REDDIT_CLIENT_ID,
       clientSecret: process.env.REDDIT_CLIENT_SECRET,
-      secret: process.env.SECRET,
     }),
-    // ...add more providers here
   ],
 })

@@ -23,6 +23,15 @@ stepzen start
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 You will also see any lint errors in the console.
 
+
+## Current Functionality
+
+- Responsive styles with tailwindcss
+- OAuth with Reddit 
+- Users can create a new post that can then be voted on.
+- Each users has a favouerie list and can explores different genre.
+
+
 ## Built With
 
 - [Next.js](https://nextjs.org/docs/getting-started)
