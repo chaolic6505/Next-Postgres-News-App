@@ -2,6 +2,8 @@
 Next-Postgres-News-App
 <project-name></h1>
 
+[Demo URL](https://commerce-one-rho-55.vercel.app/)
+
 ## Get Started
 
 Install required dependencies:
@@ -23,14 +25,13 @@ stepzen start
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 You will also see any lint errors in the console.
 
+## Things I learned
 
-## Current Functionality
-
-- OAuth with Reddit 
+- OAuth with Reddit
 - Responsive styles with tailwindcss
+- Fetching and Posting Data to Postgres with  GraphQL
 - Users can create a new post that can then be voted on.
 - Users can catergorize their posts and enter different room based on category
-
 
 ## Built With
 
