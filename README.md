@@ -1,6 +1,6 @@
-<h1 align="center"><project-name></h1>
-
-<p align="center"><project-description></p>
+<h1 align="center">
+Next-Postgres-News-App
+<project-name></h1>
 
 ## Get Started
 
@@ -26,10 +26,10 @@ You will also see any lint errors in the console.
 
 ## Current Functionality
 
-- Responsive styles with tailwindcss
 - OAuth with Reddit 
+- Responsive styles with tailwindcss
 - Users can create a new post that can then be voted on.
-- Each users has a favouerie list and can explores different genre.
+- Users can catergorize their posts and enter different room based on category
 
 
 ## Built With
