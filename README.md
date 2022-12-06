@@ -28,10 +28,10 @@ You will also see any lint errors in the console.
 ## Things I learned
 
 - OAuth with Reddit
-- Responsive styles with tailwindcss
+- Responsive styles with Tailwindcss
 - Fetching and Posting Data to Postgres with  GraphQL
 - Users can create a new post that can then be voted on.
-- Users can catergorize their posts and enter different room based on category
+- Users can categorize their posts and enter different rooms based on category
 
 ## Built With
 
