@@ -14,7 +14,7 @@
     "@uiball/loaders": "^1.2.6",
     "graphql": "^16.6.0",
     "next": "latest",
-    "next-auth": "16.13.0",
+    "next-auth": "^4.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.39.1",
