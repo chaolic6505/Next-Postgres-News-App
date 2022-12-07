@@ -1,10 +1,11 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
+console.log(process.env)
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'http://localhost:5001/api/awesome-octopus',
+  uri: process.env.NEXT_PUBLIC_STEPZEN_ENDPOINT,
   headers: {
-    Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
+    Authorization: `apikey  ${process.env.NEXT_PUBLIC_STEPZEN_API_KEY}`,
   },
 })
 

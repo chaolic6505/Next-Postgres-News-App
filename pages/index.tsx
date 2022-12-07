@@ -8,12 +8,15 @@ import SubredditRow from '../components/SubredditRow'
 import { GET_SUBREDDITS_WITH_LIMIT } from '../graphql/queries'
 
 const Home: NextPage = () => {
-  const { data } = useQuery(GET_SUBREDDITS_WITH_LIMIT, {
+  const { data, loading, error } = useQuery(GET_SUBREDDITS_WITH_LIMIT, {
     variables: {
       limit: 10,
     },
   })
 
+  console.log(data)
+    console.log(loading)
+      console.log(error)
   const subreddits: Subreddit[] = data?.getSubredditListLimit
 
   return (
