@@ -2,6 +2,8 @@
 Next-Postgres-News-App
 <project-name></h1>
 
+[Live Demo](https://next-postgres-news-6jbiwqn3o-chaolic6505.vercel.app)
+
 ## Get Started
 
 Install required dependencies:
