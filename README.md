@@ -2,6 +2,10 @@
 Next-Postgres-News-App
 <project-name></h1>
 
+<p>
+This is a clone of Reddit. Features: OAuth with Reddit, Responsive styles with Tailwindcss, Fetching and Posting Data to Postgres with  GraphQL, Users can create a new post that can then be voted on, and Users can categorize their posts and enter different rooms based on category.
+<p>
+
 [Live Demo](https://next-postgres-news-6jbiwqn3o-chaolic6505.vercel.app)
 
 ## Get Started
